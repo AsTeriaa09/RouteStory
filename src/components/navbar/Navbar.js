@@ -10,6 +10,10 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  // temporary logic
+  const isUser = true;
+  const isAdmin = true;
+
   return (
     <>
       <nav className="bg-inherit border-white border-b-2 py-0.5">
@@ -49,18 +53,39 @@ const Navbar = () => {
                 >
                   Contact
                 </Link>
-                <Link
-                  href="/admin"
-                  className="text-white hover:rounded-lg py-1 px-2 hover:bg-gray-800"
-                >
-                  Admin
-                </Link>
-                <Link
-                  href="/admin"
-                  className="text-white text-lg hover:rounded-lg py-1 px-2 hover:bg-gray-800"
-                >
-                  <button>Logout</button>
-                </Link>
+
+                {isUser && isAdmin ? (
+                  <>
+                    <Link
+                      href="/admin"
+                      className="text-white hover:rounded-lg py-1 px-2 hover:bg-gray-800"
+                    >
+                      Admin
+                    </Link>
+                  </>
+                ) : (
+                  ""
+                )}
+
+                {isUser ? (
+                  <>
+                    <Link
+                      href="/logout"
+                      className="text-white text-lg hover:rounded-lg py-1 px-2 hover:bg-gray-800"
+                    >
+                      <button>Logout</button>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      className="text-white text-lg hover:rounded-lg py-1 px-2 hover:bg-gray-800"
+                    >
+                      <button>Login</button>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
 
@@ -107,22 +132,50 @@ const Navbar = () => {
 
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link href="/" className="text-white">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+              <Link href="/" className="text-white block hover:rounded-lg py-1 px-2 hover:bg-gray-800">
                 Home
               </Link>
-              <Link href="/about" className="text-white block">
+              <Link href="/about" className="text-white block hover:rounded-lg py-1 px-2 hover:bg-gray-800">
                 About
               </Link>
-              <Link href="/blog" className="text-white block">
+              <Link href="/blog" className="text-white block hover:rounded-lg py-1 px-2 hover:bg-gray-800">
                 Blog
               </Link>
-              <Link href="/contact" className="text-white block">
+              <Link href="/contact" className="text-white block hover:rounded-lg py-1 px-2 hover:bg-gray-800">
                 Contact
               </Link>
-              <Link href="/admin" className="text-white block">
-                Admin
-              </Link>
+              {isUser && isAdmin ? (
+                <>
+                  <Link
+                    href="/admin"
+                    className="text-white block hover:rounded-lg py-1 px-2 hover:bg-gray-800"
+                  >
+                    <button>Admin</button>
+                  </Link>
+                </>
+              ) : (
+                ""
+              )}
+              {isUser ? (
+                <>
+                  <Link
+                    href="/logout"
+                    className="text-white block text-lg hover:rounded-lg py-1 px-2 hover:bg-gray-800"
+                  >
+                    <button>Logout</button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className="text-white block text-lg hover:rounded-lg py-1 px-2 hover:bg-gray-800"
+                  >
+                    <button>Login</button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         )}

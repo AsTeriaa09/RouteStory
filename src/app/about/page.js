@@ -1,13 +1,14 @@
-
+"use client";
+import Image from "next/image";
 
 const AboutPage = () => {
   return (
     <div>
-      aboutpage
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur sed illum dolore ea atque, necessitatibus consequuntur eligendi aut possimus eius nam, cupiditate, enim pariatur porro suscipit? Autem laborum atque numquam.
+      <div className="">
+        <Image src="/aboutpage.webp" alt="image" width={400} height={450} />
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default AboutPage;
-
